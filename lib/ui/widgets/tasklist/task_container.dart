@@ -11,24 +11,24 @@ class MyTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final taskProvider = context.read<TaskProvider>();
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(task.name, style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(
-                (task.description?.isEmpty ?? true)
-                    ? 'Sin descripción'
-                    : task.description!,
-              ),
-              const SizedBox(height: 15),
-            ],
+    return Card(
+      child: Column(
+        children: [
+          ListTile(
+            leading: Image(image: AssetImage('assets/books.jpg')),
+            title: Text(
+              task.name,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              (task.description?.isEmpty ?? true)
+                  ? 'Sin descripción'
+                  : task.description!,
+            ),
+            trailing: _ButtonWithDialog(taskProvider: taskProvider, task: task),
           ),
-        ),
-        _ButtonWithDialog(taskProvider: taskProvider, task: task),
-      ],
+        ],
+      ),
     );
   }
 }

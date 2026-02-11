@@ -10,6 +10,7 @@ class AppBarTask extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       centerTitle: true,
       backgroundColor: Colors.blue,
+      actions: [Switch(value: false, onChanged: null)],
     );
   }
 

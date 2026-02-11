@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_tracker/domain/entities/task.dart';
-import 'package:task_tracker/infraestructure/datasources/drift_datasource.dart';
-import 'package:task_tracker/infraestructure/repositories/local_storage_repository.dart';
+import 'package:task_tracker/infrastructure/datasources/drift_datasource.dart';
+import 'package:task_tracker/infrastructure/repositories/local_storage_repository_impl.dart';
 
 class TaskProvider extends ChangeNotifier {
   final localStorageRepository = LocalStorageRepositoryImpl(DriftDatasource());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task_tracker/config/database/database.dart';
+import 'package:task_tracker/config/theme/app_theme.dart';
 import 'package:task_tracker/ui/presentation/task_list_screen.dart';
 import 'package:task_tracker/ui/providers/task_provider.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [ChangeNotifierProvider(create: (_) => TaskProvider())],
       child: MaterialApp(
         title: 'Task Tracker',
-        theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+        theme: AppTheme().theme(),
         home: TaskListScreen(),
       ),
     );
