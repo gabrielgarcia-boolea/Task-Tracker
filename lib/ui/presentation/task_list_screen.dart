@@ -48,7 +48,6 @@ class _TaskList extends StatelessWidget {
                   }
                   final tasks = snapshot.data ?? [];
                   return ListView.builder(
-                    controller: taskProvider.taskListScrollController,
                     itemCount: tasks.length,
                     itemBuilder: (context, index) {
                       final task = tasks[index];
