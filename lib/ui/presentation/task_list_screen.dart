@@ -19,7 +19,6 @@ class TaskListScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const AddTaskScreen()),
           );
         },
-        backgroundColor: Colors.grey,
         child: const Icon(Icons.add),
       ),
     );

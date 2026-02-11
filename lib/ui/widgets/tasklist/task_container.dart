@@ -16,10 +16,7 @@ class MyTask extends StatelessWidget {
         children: [
           ListTile(
             leading: Image(image: AssetImage('assets/books.jpg')),
-            title: Text(
-              task.name,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: Text(task.name),
             subtitle: Text(
               (task.description?.isEmpty ?? true)
                   ? 'Sin descripción'

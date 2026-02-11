@@ -17,6 +17,15 @@ class AppTheme {
   }
 
   ThemeData theme() {
-    return ThemeData(useMaterial3: true);
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      cardTheme: CardThemeData(color: Colors.grey, elevation: 10.0),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: Colors.yellow,
+      ),
+      appBarTheme: AppBarThemeData(backgroundColor: Colors.lightBlueAccent),
+      listTileTheme: ListTileThemeData(),
+    );
   }
 }
