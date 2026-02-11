@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:task_tracker/domain/entities/task.dart';
+import 'package:task_tracker/domain/repositories/LocalStorageRepository.dart';
+import 'package:task_tracker/infraestructure/datasources/drift_datasource.dart';
+import 'package:task_tracker/infraestructure/repositories/local_storage_repository.dart';
 
 class TaskProvider extends ChangeNotifier {
   final taskListScrollController = ScrollController();
+  final localStorageRepository = LocalStorageRepositoryImpl(DriftDatasource());
 
-  List<TaskModel> tasksList = [
+  /* List<TaskModel> tasksList = [
     TaskModel(id: 1, name: 'Curso 1', description: 'Realizar el curso 1'),
     TaskModel(id: 2, name: 'Curso 2'),
-  ];
+  ];*/
 
   Future<void> addTask(String name, String description) async {
-    final id = tasksList.length + 1;
-    tasksList.add(TaskModel(id: id, name: name, description: description));
+    localStorageRepository.addTask(
+      TaskModel(name: name, description: description),
+    );
+    //tasksList.add(TaskModel(id: id, name: name, description: description));
     notifyListeners();
     moveScrollToBottom();
   }
 
   Future<void> removeTask(int id) async {
-    tasksList.removeWhere((task) => task.id == id);
+    localStorageRepository.deleteTask(id);
+
+    //tasksList.removeWhere((task) => task.id == id);
 
     notifyListeners();
     moveScrollToBottom();
   }
 
-  Future<void> getTasks() async {
-    notifyListeners();
-    moveScrollToBottom();
+  Future<List<TaskModel>> getTasks() async {
+    return localStorageRepository.loadTasks();
   }
 
   Future<void> moveScrollToBottom() async {

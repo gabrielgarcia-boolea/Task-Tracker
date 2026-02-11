@@ -1,4 +1,4 @@
-import 'package:task_tracker/config/database.dart';
+import 'package:task_tracker/config/database/database.dart';
 import 'package:task_tracker/domain/datasources/local_storage_datasource.dart';
 import 'package:task_tracker/domain/entities/task.dart';
 import 'package:drift/drift.dart';

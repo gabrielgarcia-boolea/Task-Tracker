@@ -56,7 +56,7 @@ class _ButtonWithDialog extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                taskProvider.removeTask(task.id);
+                taskProvider.removeTask(task.id!);
                 Navigator.pop(dialogContext);
               },
               child: const Text('Sí'),

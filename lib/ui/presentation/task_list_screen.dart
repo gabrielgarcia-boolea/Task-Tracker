@@ -37,12 +37,24 @@ class _TaskList extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                controller: taskProvider.taskListScrollController,
-                itemCount: taskProvider.tasksList.length,
-                itemBuilder: (context, index) {
-                  final task = taskProvider.tasksList[index];
-                  return MyTask(task: task);
+              child: FutureBuilder(
+                future: taskProvider.getTasks(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  }
+                  final tasks = snapshot.data ?? [];
+                  return ListView.builder(
+                    controller: taskProvider.taskListScrollController,
+                    itemCount: tasks.length,
+                    itemBuilder: (context, index) {
+                      final task = tasks[index];
+                      return MyTask(task: task);
+                    },
+                  );
                 },
               ),
             ),
