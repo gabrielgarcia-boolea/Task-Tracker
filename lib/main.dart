@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_tracker/config/database.dart';
 import 'package:task_tracker/ui/presentation/task_list_screen.dart';
 import 'package:task_tracker/ui/providers/task_provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 

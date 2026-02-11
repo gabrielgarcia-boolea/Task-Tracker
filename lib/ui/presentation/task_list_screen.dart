@@ -22,7 +22,6 @@ class TaskListScreen extends StatelessWidget {
         backgroundColor: Colors.grey,
         child: const Icon(Icons.add),
       ),
-      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

@@ -16,6 +16,18 @@ class TaskProvider extends ChangeNotifier {
     moveScrollToBottom();
   }
 
+  Future<void> removeTask(int id) async {
+    tasksList.removeWhere((task) => task.id == id);
+
+    notifyListeners();
+    moveScrollToBottom();
+  }
+
+  Future<void> getTasks() async {
+    notifyListeners();
+    moveScrollToBottom();
+  }
+
   Future<void> moveScrollToBottom() async {
     await Future.delayed(const Duration(milliseconds: 100));
 
