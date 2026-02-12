@@ -1,6 +1,6 @@
 import 'package:task_tracker/domain/datasources/local_storage_datasource.dart';
 import 'package:task_tracker/domain/entities/task.dart';
-import 'package:task_tracker/domain/repositories/LocalStorageRepository.dart';
+import 'package:task_tracker/domain/repositories/local_storage_repository.dart';
 
 class LocalStorageRepositoryImpl extends LocalStorageRepository {
   final LocalStorageDatasource datasource;

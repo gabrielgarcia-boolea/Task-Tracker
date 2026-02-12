@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_tracker/domain/entities/task.dart';
@@ -11,18 +13,21 @@ class MyTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final taskProvider = context.read<TaskProvider>();
+    final assets = ['assets/books.jpg', 'assets/embed.jpg'];
+    final finalAsset = assets[Random().nextInt(assets.length)];
+
     return Card(
       child: Column(
         children: [
           ListTile(
-            leading: Image(image: AssetImage('assets/books.jpg')),
+            leading: _ButtonWithDialog(taskProvider: taskProvider, task: task),
             title: Text(task.name),
             subtitle: Text(
               (task.description?.isEmpty ?? true)
                   ? 'Sin descripción'
                   : task.description!,
             ),
-            trailing: _ButtonWithDialog(taskProvider: taskProvider, task: task),
+            trailing: Image(image: AssetImage(finalAsset)),
           ),
         ],
       ),
@@ -60,10 +65,6 @@ class _ButtonWithDialog extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      style: TextButton.styleFrom(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.red,
       ),
       child: Text('Borrar tarea'),
     );

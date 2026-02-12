@@ -122,10 +122,6 @@ class _AddTextButton extends StatelessWidget {
           Navigator.of(context).pop();
         }
       },
-      style: TextButton.styleFrom(
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
-      ),
       child: const Text('Agregar tarea'),
     );
   }
